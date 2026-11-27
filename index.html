@@ -38,6 +38,22 @@ h1{font-size:21px;font-weight:800;letter-spacing:-.5px;white-space:nowrap}
 #mess{background:linear-gradient(90deg,#d9c9ff,#a98ae6)}
 .bar::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-45deg,rgba(255,255,255,.35) 0 6px,transparent 6px 12px)}
 #messRow em{color:#9a7ad6}
+#aff{background:linear-gradient(90deg,#ffd0a8,#ff9fb8)}
+#affRow em{color:#ff8a6b}
+.mrow{cursor:default}
+.lvcard{background:linear-gradient(135deg,#fff3e8,#ffe6f0);border:2px solid #fff;border-radius:16px;padding:9px 12px;margin-bottom:10px;text-align:left;font-size:12.5px;line-height:1.45}
+.lvcard b{font-size:15px}
+.lvcard .lvbar{height:9px;background:#fff;border-radius:6px;overflow:hidden;margin:6px 0 4px}
+.lvcard .lvbar i{display:block;height:100%;background:linear-gradient(90deg,#ffd0a8,#ff9fb8);border-radius:6px}
+.lvcard small{color:var(--sub)}
+.dex{max-height:min(46vh,380px);overflow-y:auto;text-align:left;margin-bottom:12px;padding-right:4px;overscroll-behavior:contain}
+.dex h3{font-size:12.5px;font-weight:800;color:var(--sub);margin:10px 0 5px;display:flex;justify-content:space-between}
+.dex h3:first-child{margin-top:0}
+.dex ul{list-style:none;display:flex;flex-wrap:wrap;gap:5px}
+.dex li{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:5px 10px;font-size:12.5px;font-weight:600}
+.dex li.no{color:#c9b3cf;letter-spacing:2px;background:#fdf7fb;border-style:dashed}
+.dex li.lock{color:#c9b3cf;background:#faf6fc;border-style:dashed;font-size:11.5px;letter-spacing:0}
+.dex li.fresh{border-color:var(--pink);box-shadow:0 0 0 2px #ffe0ec}
 
 /* 무대 */
 .stage{flex:1;position:relative;background:var(--card);border:2px solid #fff;border-radius:26px;overflow:hidden;
@@ -81,7 +97,7 @@ h1{font-size:21px;font-weight:800;letter-spacing:-.5px;white-space:nowrap}
 .ripple{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;border:3px solid var(--gold);pointer-events:none;z-index:6;animation:rip .45s ease-out forwards}
 .ripple.bell{border-color:#ffd34d;width:34px;height:34px;margin:-17px 0 0 -17px}
 @keyframes rip{from{transform:scale(.3);opacity:1}to{transform:scale(1.4);opacity:0}}
-.bubble{position:absolute;left:50%;top:14px;transform:translateX(-50%) scale(.8);background:#fff;border:2.5px solid var(--pink2);border-radius:20px;padding:8px 14px;font-size:15px;font-weight:700;opacity:0;transition:.25s;z-index:8;white-space:nowrap;box-shadow:0 4px 0 var(--pink2)}
+.bubble{position:absolute;left:50%;top:14px;transform:translateX(-50%) scale(.8);width:max-content;max-width:86%;text-align:center;background:#fff;border:2.5px solid var(--pink2);border-radius:20px;padding:8px 14px;font-size:15px;font-weight:700;opacity:0;transition:.25s;z-index:8;white-space:normal;word-break:keep-all;box-shadow:0 4px 0 var(--pink2)}
 .bubble::after{content:"";position:absolute;left:50%;bottom:-11px;width:14px;height:14px;background:#fff;border-right:2.5px solid var(--pink2);border-bottom:2.5px solid var(--pink2);transform:translateX(-50%) rotate(45deg)}
 .bubble.show{opacity:1;transform:translateX(-50%) scale(1)}
 .hint{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);background:#fff;border-radius:16px;padding:7px 13px;font-size:12.5px;font-weight:700;color:var(--sub);border:2px solid var(--line);z-index:5;animation:bob 1.6s ease-in-out infinite;white-space:nowrap}
@@ -123,10 +139,19 @@ h1{font-size:21px;font-weight:800;letter-spacing:-.5px;white-space:nowrap}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 .modal{position:absolute;inset:0;background:rgba(91,58,99,.28);display:none;align-items:center;justify-content:center;z-index:40;padding:16px;backdrop-filter:blur(3px)}
 .modal.on{display:flex}
-.panel{width:100%;max-width:380px;background:#fffafd;border:3px solid #fff;border-radius:26px;padding:20px 18px 18px;box-shadow:0 14px 40px rgba(120,60,110,.25);text-align:center;animation:pop .35s ease-out}
+.panel{width:100%;max-width:400px;background:#fffafd;border:3px solid #fff;border-radius:26px;padding:20px 18px 18px;box-shadow:0 14px 40px rgba(120,60,110,.25);text-align:center;animation:pop .35s ease-out}
 .panel h2{font-size:20px;font-weight:800;margin-bottom:4px}
 .panel p{font-size:13px;color:var(--sub);margin-bottom:14px}
-.stamps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px 8px;margin-bottom:16px}
+.stamps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px 8px;margin-bottom:8px;max-height:min(52vh,430px);overflow-y:auto;padding:6px 2px;overscroll-behavior:contain}
+.stamp{cursor:help}
+.tiphelp{font-size:11px !important;margin-bottom:12px !important}
+#tip{position:fixed;left:0;top:0;z-index:60;max-width:230px;background:#fff;border:2.5px solid var(--pink2);border-radius:14px;padding:8px 11px;box-shadow:0 6px 18px rgba(120,60,110,.2);pointer-events:none;opacity:0;transform:translateY(4px);transition:opacity .15s,transform .15s;text-align:left}
+#tip.show{opacity:1;transform:none}
+#tip::after{content:"";position:absolute;left:var(--ax,50%);bottom:-8px;width:12px;height:12px;background:#fff;border-right:2.5px solid var(--pink2);border-bottom:2.5px solid var(--pink2);transform:translateX(-50%) rotate(45deg)}
+#tip.below::after{bottom:auto;top:-8px;transform:translateX(-50%) rotate(225deg)}
+#tip b{display:block;font-size:13px;margin-bottom:3px}
+#tip span{display:block;font-size:12px;color:var(--ink);line-height:1.4}
+#tip em{display:block;font-style:normal;font-size:11px;color:var(--sub);margin-top:4px;font-weight:700}
 .stamp{display:flex;flex-direction:column;align-items:center;gap:4px}
 .stamp i{width:58px;height:58px;border-radius:50%;border:2.5px dashed #e5cfe0;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:26px;filter:grayscale(1);opacity:.35}
 .stamp.got i{border:3px solid #ff8fb8;background:radial-gradient(circle,#fff 55%,#ffe3ef);filter:none;opacity:1;transform:rotate(-8deg);box-shadow:inset 0 0 0 3px #fff,inset 0 0 0 5px #ffc4da}
@@ -152,6 +177,7 @@ h1{font-size:21px;font-weight:800;letter-spacing:-.5px;white-space:nowrap}
     <h1>🫳 스오 쓰담쓰담</h1>
     <div class="hbtns">
       <button class="btn" id="chBtn" title="10초 쓰담 챌린지">⏱</button>
+      <button class="btn" id="dexBtn" title="대사 도감">📖<span class="dot" id="dexDot"></span></button>
       <button class="btn" id="stBtn" title="도장판">🏆<span class="dot" id="stDot"></span></button>
       <button class="btn" id="sound" title="소리">🔊</button>
     </div>
@@ -159,6 +185,7 @@ h1{font-size:21px;font-weight:800;letter-spacing:-.5px;white-space:nowrap}
 
   <div class="meter">
     <div class="mrow"><span>기분</span><div class="bar"><i id="fill"></i></div><em id="mood">……?</em></div>
+    <div class="mrow" id="affRow"><span>호감</span><div class="bar"><i id="aff"></i></div><em id="affLbl">Lv.1</em></div>
     <div class="mrow" id="messRow"><span>머리</span><div class="bar"><i id="mess"></i></div><em id="messLbl">단정</em></div>
   </div>
 
@@ -198,12 +225,25 @@ h1{font-size:21px;font-weight:800;letter-spacing:-.5px;white-space:nowrap}
 
   <div class="toast" id="toast"></div>
 
+  <!-- 대사 도감 -->
+  <div class="modal" id="dexModal">
+    <div class="panel">
+      <h2>📖 스오 대사 도감</h2>
+      <p id="dexCount"></p>
+      <div class="lvcard" id="lvCard"></div>
+      <div class="dex" id="dex"></div>
+      <p class="tiphelp">🔒는 호감도 레벨이 오르면 들을 수 있는 대사예요</p>
+      <div class="pbtns"><button onclick="closeModal('dexModal')">닫기</button></div>
+    </div>
+  </div>
+
   <!-- 도장판 -->
   <div class="modal" id="stModal">
     <div class="panel">
       <h2>🏆 쓰담 도장판</h2>
       <p id="stCount"></p>
       <div class="stamps" id="stamps"></div>
+      <p class="tiphelp">도장에 마우스를 올리면(휴대폰은 톡) 받는 방법이 보여요</p>
       <div class="pbtns"><button onclick="closeModal('stModal')">닫기</button></div>
     </div>
   </div>
@@ -214,6 +254,7 @@ h1{font-size:21px;font-weight:800;letter-spacing:-.5px;white-space:nowrap}
   </div>
 </div>
 <div id="drag"></div>
+<div id="tip" role="tooltip"></div>
 
 <script>
 /* ===== 설정 (숫자와 글자만 바꿔도 돼요) ===== */
@@ -229,57 +270,109 @@ const GAME = {
   combPerPx: 0.045,    // 빗질 1px 당 머리가 정리되는 정도 (작을수록 천천히 1번 그림으로 돌아가요)
   messyGain: 0.4,      // 머리가 헝클어진 동안엔 기분이 이 비율만큼만 올라요
 };
-const LINES = [        // 기분 구간별 말풍선
-  { at: 0,  mood: "……?",      say: ["응? 무슨 일이야?", "……뭐 하는 거야?", "갑자기?"] },
-  { at: 25, mood: "간질간질",   say: ["후후, 간지러워", "머리 망가지는데…", "그렇게 재밌어?"] },
-  { at: 55, mood: "에헤헤",     say: ["더 할 거야?", "……아직이야?", "어쩔 수 없네"] },
-  { at: 85, mood: "기분 좋네",  say: ["그만해~ 정말", "에에…", "이번만이야"] },
+const LINES = [        // 기분 구간별 말풍선 (플레이어 = 사쿠라 군)
+  { at: 0,  mood: "……?",      say: ["응? 사쿠라 군?", "……사쿠라 군, 뭐 하는 거야?", "갑자기? 사쿠라 군답지 않네"] },
+  { at: 25, mood: "간질간질",   say: ["후후, 간지러워", "머리 망가지는데…", "사쿠라 군, 그렇게 재밌어?", "손이 생각보다 다정하네, 사쿠라 군"] },
+  { at: 55, mood: "에헤헤",     say: ["더 할 거야?", "……아직이야?", "어쩔 수 없네", "사쿠라 군, 얼굴 빨개졌는데? 후후"] },
+  { at: 85, mood: "기분 좋네",  say: ["그만해~ 정말", "에에…", "이번만이야", "사쿠라 군이 이렇게 적극적일 줄은 몰랐네"] },
 ];
 const POKE = {
   mood: -3,
-  say: ["하지 마~", "그만해~", "아야", "볼은 안 돼~", "콕콕 하지 마~"],
-  sayMany: ["……또?", "정말 그만해~", "에에…", "볼 구멍 나겠어", "……화낸다?"],
+  say: ["하지 마~", "그만해~", "아야", "볼은 안 돼~", "콕콕 하지 마~", "사쿠라 군, 장난꾸러기네"],
+  sayMany: ["……또?", "정말 그만해~", "에에…", "볼 구멍 나겠어", "……화낸다?", "사쿠라 군, 나도 찔러 볼까?"],
   words: ["콕!", "쿡!", "콕콕"],
 };
 const EARRING = {
-  say: ["아, 귀걸이?", "후후, 예쁘지?", "흔들지 마~"],
-  sayMany: ["그거 장난감 아니야~", "……귀 아파", "딸랑딸랑 그만~"],   // 짧은 시간에 여러 번 치면
+  say: ["아, 귀걸이?", "후후, 예쁘지?", "흔들지 마~", "사쿠라 군도 하나 해 볼래? 잘 어울릴 텐데"],
+  sayMany: ["그거 장난감 아니야~", "……귀 아파", "딸랑딸랑 그만~", "사쿠라 군, 고양이야? 후후"],   // 짧은 시간에 여러 번 치면
 };
 const SNACKS = {       // 간식: eat가 true면 먹고(마시고), false면 거절해요
-  tea:   { emoji: "🍵", name: "차",       eat: true,  gain: 30, say: ["후후, 고마워. 좋은 향이네", "차는 언제나 환영이야", "딱 좋은 온도네"] },
-  dango: { emoji: "🍡", name: "벚꽃 경단", eat: false, say: ["아, 난 다이어트 중이라…", "경단은 괜찮아. 다이어트 중이거든", "……마음만 받을게. 다이어트 중이야"] },
-  cake:  { emoji: "🍰", name: "다과",      eat: false, say: ["아, 난 다이어트 중이라…", "케이크는 안 돼. 다이어트 중이야", "후후, 유혹하지 마. 다이어트 중이니까"] },
+  tea:   { emoji: "🍵", name: "차",       eat: true,  gain: 30, say: ["후후, 고마워. 좋은 향이네", "사쿠라 군이 차를 타 주다니, 별일이네", "딱 좋은 온도네"] },
+  dango: { emoji: "🍡", name: "벚꽃 경단", eat: false, say: ["아, 난 다이어트 중이라…", "경단은 사쿠라 군이 먹어. 다이어트 중이거든", "……마음만 받을게. 다이어트 중이야"] },
+  cake:  { emoji: "🍰", name: "다과",      eat: false, say: ["아, 난 다이어트 중이라…", "케이크는 안 돼. 다이어트 중이야", "사쿠라 군, 날 유혹하는 거야? 후후"] },
 };
-const FULL_SAY = ["배불러… 이제 됐어", "그만 줘도 돼~", "……차는 이제 충분해"];   // 짧은 시간에 차를 많이 주면
+const FULL_SAY = ["배불러… 이제 됐어", "그만 줘도 돼~", "사쿠라 군, 나 배 터지겠어"];   // 짧은 시간에 차를 많이 주면
 const MESS = {
   label: ["단정", "살짝 헝클", "헝클어짐!"],
-  complain: ["머리 헝클어졌다니까…", "빗 좀 줄래?", "……이 머리로 어떻게 다녀"],
+  complain: ["머리 헝클어졌다니까…", "사쿠라 군, 빗 좀 줄래?", "……이 머리로 어떻게 다녀", "사쿠라 군 머리처럼 됐잖아"],
   comb: ["음, 고마워", "후후, 살살 해 줘", "그래, 거기"],
-  done: ["후후, 고마워. 정리됐네", "이제 좀 낫다", "빗질은 잘하네"],
+  done: ["후후, 고마워. 정리됐네", "이제 좀 낫다", "사쿠라 군, 빗질은 잘하네?"],
 };
-const SLEEP = { start: "……쿨쿨", wake: ["……응? 잠깐 졸았네", "……깜빡 잠들었어", "아, 미안. 졸았어"] };
+const SLEEP = { start: "……쿨쿨", wake: ["……응? 잠깐 졸았네", "……깜빡 잠들었어", "아, 사쿠라 군이구나. 졸았어"] };
 const CHALLENGE = {
   seconds: 10,
   ranks: [             // 점수가 이 이상이면 이 칭호
-    { at: 0,  name: "🌱 쓰담 새싹",   say: "……벌써 끝났어?" },
+    { at: 0,  name: "🌱 쓰담 새싹",   say: "……벌써 끝났어, 사쿠라 군?" },
     { at: 30, name: "🐣 쓰담 견습생", say: "후후, 나쁘지 않네" },
-    { at: 60, name: "🧹 쓰담 장인",   say: "손이 꽤 익숙하네?" },
-    { at: 100, name: "🏆 스오 전문가", say: "……너무 잘하는 거 아니야?" },
+    { at: 60, name: "🧹 쓰담 장인",   say: "사쿠라 군, 손이 꽤 익숙하네?" },
+    { at: 100, name: "🏆 스오 전문가", say: "사쿠라 군, 혹시 몰래 연습했어? 후후" },
   ],
 };
-const STAMPS = [       // 도장판
-  { id: "first",   icon: "🫳", name: "처음 쓰다듬기" },
-  { id: "max",     icon: "✨", name: "쓰담 MAX" },
-  { id: "poke10",  icon: "👉", name: "볼 콕 10번" },
-  { id: "earring", icon: "🔔", name: "귀걸이 딸랑" },
-  { id: "snack",   icon: "🍰", name: "다이어트 중" },
-  { id: "tea",     icon: "🍵", name: "차 대접" },
-  { id: "comb",    icon: "🪮", name: "머리 빗어 주기" },
-  { id: "sleep",   icon: "💤", name: "조는 스오" },
-  { id: "wake",    icon: "⏰", name: "깨워 버렸다" },
-  { id: "chdone",  icon: "⏱", name: "챌린지 완주" },
-  { id: "expert",  icon: "🏆", name: "스오 전문가" },
-  { id: "total100",icon: "💮", name: "누적 쓰담 100번" },
+const STAMPS = [       // 도장판: hint가 마우스를 올렸을 때 나오는 달성 조건
+  { id: "first",    icon: "🫳", name: "처음 쓰다듬기",   hint: "스오의 머리를 처음으로 쓰다듬어요" },
+  { id: "max",      icon: "✨", name: "쓰담 MAX",        hint: "기분을 100%까지 올려요" },
+  { id: "maxkeep",  icon: "🌈", name: "계속 기분 좋네",   hint: "쓰담 MAX 상태를 10초 동안 유지해요" },
+  { id: "total100", icon: "💮", name: "누적 쓰담 100번",  hint: "지금까지 모두 100번 쓰다듬어요" },
+  { id: "total500", icon: "🌸", name: "누적 쓰담 500번",  hint: "지금까지 모두 500번 쓰다듬어요" },
+  { id: "total1000",icon: "👑", name: "누적 쓰담 1000번", hint: "지금까지 모두 1000번 쓰다듬어요" },
+  { id: "poke10",   icon: "👉", name: "볼 콕 10번",       hint: "볼을 모두 10번 콕 찔러요" },
+  { id: "poke50",   icon: "🫓", name: "볼 구멍 나겠어",   hint: "볼을 모두 50번 콕 찔러요" },
+  { id: "angry",    icon: "💢", name: "……화낸다?",        hint: "2.5초 안에 볼을 5번 연달아 콕 찔러요" },
+  { id: "earring",  icon: "🔔", name: "귀걸이 딸랑",      hint: "귀걸이를 톡 쳐서 딸랑 소리를 내요" },
+  { id: "toy",      icon: "🎐", name: "장난감 아니야",    hint: "짧은 시간에 귀걸이를 너무 많이 쳐요" },
+  { id: "bell30",   icon: "🎶", name: "방울 연주가",      hint: "귀걸이를 모두 30번 쳐요" },
+  { id: "tea",      icon: "🍵", name: "차 대접",          hint: "🍵 차를 스오의 입으로 가져다줘요" },
+  { id: "tea10",    icon: "🫖", name: "찻집 단골",        hint: "차를 모두 10잔 대접해요" },
+  { id: "full",     icon: "🥱", name: "배불러",           hint: "짧은 시간에 차를 너무 많이 줘요" },
+  { id: "snack",    icon: "🍰", name: "다이어트 중",      hint: "🍰 다과나 🍡 경단을 권해 봐요" },
+  { id: "tempt",    icon: "😈", name: "유혹의 손길",      hint: "다과·경단을 모두 10번 권해요" },
+  { id: "messy",    icon: "🌀", name: "헝클어진 머리",    hint: "머리가 완전히 헝클어질 때까지 쓰다듬어요" },
+  { id: "comb",     icon: "🪮", name: "머리 빗어 주기",   hint: "헝클어진 머리를 🪮 빗으로 다시 단정하게 빗어요" },
+  { id: "comb5",    icon: "💇", name: "전속 스타일리스트", hint: "머리를 끝까지 빗어 주기를 5번 해요" },
+  { id: "sleep",    icon: "💤", name: "조는 스오",        hint: "한참 동안 가만히 둬서 스오를 재워요" },
+  { id: "nap",      icon: "🛌", name: "단잠",             hint: "잠든 스오를 1분 동안 깨우지 않아요" },
+  { id: "wake",     icon: "⏰", name: "깨워 버렸다",      hint: "졸고 있는 스오를 깨워요" },
+  { id: "chdone",   icon: "⏱", name: "챌린지 완주",      hint: "10초 쓰담 챌린지를 끝까지 해요" },
+  { id: "apprentice",icon: "🐣", name: "쓰담 견습생",     hint: "10초 챌린지에서 30점 이상" },
+  { id: "master",   icon: "🧹", name: "쓰담 장인",        hint: "10초 챌린지에서 60점 이상" },
+  { id: "expert",   icon: "🏆", name: "스오 전문가",      hint: "10초 챌린지에서 100점 이상" },
+  { id: "night",    icon: "🌙", name: "밤의 스오",        hint: "밤 12시부터 새벽 5시 사이에 쓰다듬어요" },
+  { id: "again",    icon: "📅", name: "또 왔어?",         hint: "다른 날에 다시 놀러 와요" },
+  { id: "dex10",    icon: "📖", name: "대사 수집가",      hint: "대사 도감에 대사를 10개 모아요" },
+  { id: "dexhalf",  icon: "📚", name: "절반 들었어",      hint: "대사 도감을 절반 이상 채워요" },
+  { id: "dexall",   icon: "🎙", name: "대사 도감 완성",   hint: "대사 도감의 모든 대사를 들어요" },
+  { id: "lv3",      icon: "💗", name: "1학년 1반 동료",   hint: "호감도 Lv.3이 돼요" },
+  { id: "lv5",      icon: "💞", name: "급장과 부급장",    hint: "호감도 Lv.5가 돼요" },
+  { id: "lv7",      icon: "💝", name: "둘도 없는 사이",   hint: "호감도를 최고 레벨(Lv.7)까지 올려요" },
+  { id: "all",      icon: "🎖", name: "도장 마스터",      hint: "다른 도장을 전부 모아요" },
+];
+const LEVELS = [       // 호감도 단계: at 점수가 되면 레벨업, say는 레벨업할 때 스오가 하는 말
+  { at: 0,    name: "처음 본 전학생" },
+  { at: 150,  name: "같은 반",        say: "사쿠라 군, 또 왔네? 후후, 이제 익숙해졌어?" },
+  { at: 500,  name: "1학년 1반 동료",  say: "사쿠라 군이랑 있으면 이상하게 편하네" },
+  { at: 1100, name: "든든한 동료",     say: "처음엔 손대면 물 것 같더니, 사쿠라 군도 많이 변했네" },
+  { at: 2000, name: "급장과 부급장",   say: "……사쿠라 군이라서 허락하는 거야. 알지?" },
+  { at: 3200, name: "단짝",           say: "오늘은 사쿠라 군이 늦길래 기다렸잖아. 농담이야" },
+  { at: 5000, name: "둘도 없는 사이",  say: "……고마워, 사쿠라 군. 늘 와 줘서" },
+];
+const AFFECTION = {    // 무엇을 하면 호감도가 얼마나 오르는지
+  stroke: 1, poke: 1, earring: 1, tea: 5, refuse: 1, comb: 10, wake: 2, challenge: 8,
+};
+const UNLOCK = [       // 호감도 레벨이 오르면 새로 열리는 대사 (cat: 어떤 상황에서 나오는지)
+  { lv: 2, cat: "pet",     lines: ["사쿠라 군, 오늘도 쓰다듬으러 왔어?", "사쿠라 군 손, 따뜻하네"] },
+  { lv: 2, cat: "greet",   lines: ["아, 사쿠라 군. 왔어?", "어서 와, 사쿠라 군. 후후"] },
+  { lv: 3, cat: "poke",    lines: ["……사쿠라 군이니까 봐주는 거야", "볼 말고 머리 하자, 응? 사쿠라 군"] },
+  { lv: 3, cat: "tea",     lines: ["사쿠라 군이 준 차가 제일 맛있네", "사쿠라 군도 같이 마실래?"] },
+  { lv: 3, cat: "greet",   lines: ["사쿠라 군, 기다리고 있었어. 조금은"] },
+  { lv: 4, cat: "earring", lines: ["이 귀걸이, 사쿠라 군 마음에 들어?", "그렇게 빤히 보면 부끄러운데? 후후"] },
+  { lv: 4, cat: "pet",     lines: ["사쿠라 군, 이러다 쓰다듬기 장인 되겠어", "……조금만 더 해도 돼", "어라, 사쿠라 군 귀까지 빨개졌네?"] },
+  { lv: 5, cat: "comb",    lines: ["빗질은 사쿠라 군한테만 맡길게", "역시 사쿠라 군이 제일 잘 빗네"] },
+  { lv: 5, cat: "wake",    lines: ["……꿈에 사쿠라 군이 나왔어. 무슨 꿈이었는지는 비밀", "사쿠라 군이 깨워 준 거야? 조금 더 자고 싶었는데"] },
+  { lv: 5, cat: "greet",   lines: ["사쿠라 군, 오늘은 무슨 일 있었어?"] },
+  { lv: 6, cat: "refuse",  lines: ["……한 입만? 아, 아니야. 다이어트 중이야", "사쿠라 군이 먹여 주는 거라면… 아니, 안 돼"] },
+  { lv: 6, cat: "pet",     lines: ["사쿠라 군한테만 특별히야", "후후, 사쿠라 군은 솔직하지 못하네. 좋으면서"] },
+  { lv: 7, cat: "pet",     lines: ["……계속 이렇게 있어도 좋겠네, 사쿠라 군", "사쿠라 군, 지금 웃었지? 봤어"] },
+  { lv: 7, cat: "greet",   lines: ["왔구나, 사쿠라 군. 오늘도 고마워"] },
 ];
 const PET_TALK = 4.5;
 const END_SAY = ["……끝났어? 후후", "머리 정리해야겠네", "다음엔 미리 말해 줘"];
@@ -294,13 +387,18 @@ let mood = 0, best = 0, strokes = 0, total = 0, lastPet = 0, down = false, last 
     mess = 0, hk = 0, hm = 0, messFull = false, lastComplain = 0, combAcc = 0,
     lastAct = performance.now(), sleeping = false, lastZ = 0,
     pokes = 0, pokeTimes = [], bellTimes = [], snackTimes = [],
-    ch = null, bestScore = 0, got = {};
+    ch = null, bestScore = 0, got = {}, cnt = {}, combPeak = 0, maxSince = 0, sleepStart = 0;
 function load(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : v; } catch (e) { return d; } }
 function save(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
 total = +load("suoPetTotal", 0) || 0;
 soundOn = load("suoPetSound", "on") !== "off";
 bestScore = +load("suoPetBest", 0) || 0;
 try { got = JSON.parse(load("suoPetStamps", "{}")) || {}; } catch (e) { got = {}; }
+try { cnt = JSON.parse(load("suoPetCount", "{}")) || {}; } catch (e) { cnt = {}; }
+function count(k) { cnt[k] = (cnt[k] || 0) + 1; save("suoPetCount", JSON.stringify(cnt)); return cnt[k]; }
+const today = new Date().toDateString(), lastDay = load("suoPetDay", null);
+save("suoPetDay", today);
+if (lastDay && lastDay !== today) setTimeout(() => stamp("again"), 1200);
 $("sTotal").textContent = total;
 $("sound").textContent = soundOn ? "🔊" : "🔇";
 
@@ -391,6 +489,7 @@ function ripple(p, cls = "") {
 function anim(cls) { chr.classList.remove("poked", "chomp", "ting"); void chr.offsetWidth; chr.classList.add(cls); setTimeout(() => chr.classList.remove(cls), 520); }
 let bubbleT;
 function say(text, ms = 1800) {
+  hear(text);
   const b = $("bubble"); b.textContent = text; b.classList.add("show");
   clearTimeout(bubbleT); bubbleT = setTimeout(() => b.classList.remove("show"), ms);
 }
@@ -401,6 +500,82 @@ function toast(text) {
 }
 function hideHint() { $("hint").style.display = "none"; }
 
+/* ---------- 호감도 ---------- */
+let aff = +load("suoPetAff", 0) || 0, level = 1;
+function lvOf(a) { let l = 1; LEVELS.forEach((x, i) => { if (a >= x.at) l = i + 1; }); return l; }
+level = lvOf(aff);
+function unlocked(cat) { return UNLOCK.filter(u => u.cat === cat && level >= u.lv).flatMap(u => u.lines); }
+function more(base, cat) { return base.concat(unlocked(cat)); }
+function love(kind) {
+  aff += AFFECTION[kind] || 0; save("suoPetAff", Math.round(aff));
+  const l = lvOf(aff);
+  if (l > level) {
+    level = l; const L = LEVELS[l - 1];
+    setTimeout(() => { say(L.say, 3000); chime(); }, 400);
+    toastQ.push(`💗 호감도 Lv.${l}! ${L.name}`); if (toastQ.length === 1) nextToast();
+    if (l >= 3) stamp("lv3"); if (l >= 5) stamp("lv5"); if (l >= 7) stamp("lv7");
+    for (let i = 0; i < 6; i++) setTimeout(() => { const q = at(0.3 + Math.random() * 0.4, 0.15 + Math.random() * 0.3); fx(q, pick(["💗", "💕", "🌸"]), "heart"); }, i * 90);
+  }
+  drawAff();
+}
+function drawAff() {
+  const cur = LEVELS[level - 1], nxt = LEVELS[level];
+  $("aff").style.width = (nxt ? (aff - cur.at) / (nxt.at - cur.at) * 100 : 100) + "%";
+  $("affLbl").textContent = "Lv." + level;
+  $("affRow").title = `${cur.name} (${Math.round(aff)}점)`;
+}
+drawAff();
+
+/* ---------- 대사 도감 ---------- */
+let heard = {}; try { heard = JSON.parse(load("suoPetDex", "{}")) || {}; } catch (e) { heard = {}; }
+const DEX = [
+  { title: "🫳 쓰다듬기", lines: [...LINES.flatMap(l => l.say), ...END_SAY], cat: "pet" },
+  { title: "👉 볼 콕", lines: [...POKE.say, ...POKE.sayMany], cat: "poke" },
+  { title: "🔔 귀걸이", lines: [...EARRING.say, ...EARRING.sayMany], cat: "earring" },
+  { title: "🍵 차", lines: [...SNACKS.tea.say, ...FULL_SAY], cat: "tea" },
+  { title: "🍰 다이어트 중", lines: [...SNACKS.dango.say, ...SNACKS.cake.say], cat: "refuse" },
+  { title: "🪮 머리", lines: [...MESS.complain, ...MESS.comb, ...MESS.done], cat: "comb" },
+  { title: "💤 졸음", lines: [SLEEP.start, ...SLEEP.wake], cat: "wake" },
+  { title: "⏱ 챌린지", lines: CHALLENGE.ranks.map(r => r.say) },
+  { title: "👋 인사", lines: [], cat: "greet" },
+  { title: "💗 호감도 레벨업", lines: [], lvs: LEVELS.slice(1).map((L, i) => ({ t: L.say, lv: i + 2 })) },
+].map(g => {
+  const items = g.lines.map(t => ({ t, lv: 1 }));
+  if (g.cat) items.push(...UNLOCK.filter(u => u.cat === g.cat).flatMap(u => u.lines.map(t => ({ t, lv: u.lv }))));
+  if (g.lvs) items.push(...g.lvs);
+  return { title: g.title, items };
+});
+{ const seen = new Set(); DEX.forEach(g => { g.items = g.items.filter(x => !seen.has(x.t) && seen.add(x.t)); }); }
+const DEX_ALL = DEX.flatMap(g => g.items.map(x => x.t));
+let freshLines = new Set();
+function hear(text) {
+  if (heard[text] || !DEX_ALL.includes(text)) return;
+  heard[text] = Date.now(); save("suoPetDex", JSON.stringify(heard));
+  freshLines.add(text);
+  $("dexDot").textContent = freshLines.size; $("dexDot").classList.add("on");
+  const n = DEX_ALL.filter(t => heard[t]).length;
+  if (n === 1) toast("📖 새 대사가 도감에 모였어요");
+  if (n >= 10) stamp("dex10");
+  if (n >= DEX_ALL.length / 2) stamp("dexhalf");
+  if (n >= DEX_ALL.length) stamp("dexall");
+}
+function drawDex() {
+  const n = DEX_ALL.filter(t => heard[t]).length;
+  $("dexCount").textContent = `${n} / ${DEX_ALL.length}개 들었어요`;
+  const cur = LEVELS[level - 1], nxt = LEVELS[level];
+  $("lvCard").innerHTML = `<b>💗 호감도 Lv.${level} · ${cur.name}</b>
+    <div class="lvbar"><i style="width:${nxt ? (aff - cur.at) / (nxt.at - cur.at) * 100 : 100}%"></i></div>
+    <small>${nxt ? `다음 레벨까지 ${Math.ceil(nxt.at - aff)}점 · 쓰다듬기, 차 주기, 빗질 등 무엇이든 함께하면 올라요` : "최고 레벨이에요!"}</small>`;
+  $("dex").innerHTML = DEX.map(g => {
+    const got = g.items.filter(x => heard[x.t]).length;
+    return `<h3><span>${g.title}</span><span>${got}/${g.items.length}</span></h3><ul>${g.items.map(x =>
+      heard[x.t] ? `<li class="${freshLines.has(x.t) ? "fresh" : ""}">${x.t}</li>`
+      : x.lv > level ? `<li class="lock">🔒 Lv.${x.lv}</li>` : `<li class="no">???</li>`).join("")}</ul>`;
+  }).join("");
+}
+$("dexBtn").onclick = () => { drawDex(); freshLines = new Set(); $("dexDot").classList.remove("on"); $("dexModal").classList.add("on"); };
+if (level >= 2) setTimeout(() => { if (!$("bubble").classList.contains("show")) say(pick(unlocked("greet")), 2400); }, 900);
+
 /* ---------- 도장 ---------- */
 let newStamps = 0;
 function stamp(id) {
@@ -408,17 +583,43 @@ function stamp(id) {
   got[id] = Date.now(); save("suoPetStamps", JSON.stringify(got));
   const s = STAMPS.find(x => x.id === id);
   newStamps++; $("stDot").textContent = newStamps; $("stDot").classList.add("on");
-  stampSnd(); toast(`${s.icon} 도장 획득! ${s.name}`);
+  toastQ.push(`${s.icon} 도장 획득! ${s.name}`); if (toastQ.length === 1) nextToast();
   lastNew = id;
+  if (id !== "all" && STAMPS.every(x => x.id === "all" || got[x.id])) stamp("all");
 }
-let lastNew = null;
+let lastNew = null, toastQ = [];
+function nextToast() {
+  if (!toastQ.length) return;
+  stampSnd(); toast(toastQ[0]);
+  setTimeout(() => { toastQ.shift(); nextToast(); }, 1700);
+}
 function drawStamps() {
   const n = STAMPS.filter(s => got[s.id]).length;
   $("stCount").textContent = `${n} / ${STAMPS.length}개 모았어요`;
-  $("stamps").innerHTML = STAMPS.map(s => `<div class="stamp ${got[s.id] ? "got" : ""} ${s.id === lastNew ? "new" : ""}"><i>${s.icon}</i><small>${s.name}</small></div>`).join("");
+  $("stamps").innerHTML = STAMPS.map(s => `<div class="stamp ${got[s.id] ? "got" : ""} ${s.id === lastNew ? "new" : ""}" data-id="${s.id}"><i>${s.icon}</i><small>${s.name}</small></div>`).join("");
+}
+const tip = $("tip"); let tipT;
+function showTip(el, auto) {
+  const s = STAMPS.find(x => x.id === el.dataset.id); if (!s) return;
+  const d = got[s.id] ? new Date(got[s.id]) : null;
+  tip.innerHTML = `<b>${s.icon} ${s.name}</b><span>${s.hint}</span><em>${d ? `✔ ${d.getMonth() + 1}월 ${d.getDate()}일에 받았어요` : "아직 못 받았어요"}</em>`;
+  tip.classList.add("show");
+  const r = el.querySelector("i").getBoundingClientRect(), w = tip.offsetWidth, h = tip.offsetHeight;
+  const x = Math.max(8, Math.min(innerWidth - w - 8, r.left + r.width / 2 - w / 2));
+  const above = r.top - h - 10 > 8;
+  tip.style.left = x + "px"; tip.style.top = (above ? r.top - h - 10 : r.bottom + 10) + "px";
+  tip.style.setProperty("--ax", (r.left + r.width / 2 - x) + "px"); tip.classList.toggle("below", !above);
+  clearTimeout(tipT); if (auto) tipT = setTimeout(hideTip, 2600);
+}
+function hideTip() { tip.classList.remove("show"); }
+$("stamps").addEventListener("pointerover", e => { const el = e.target.closest(".stamp"); if (el && e.pointerType === "mouse") showTip(el); });
+$("stamps").addEventListener("pointerout", e => { const el = e.target.closest(".stamp"); if (el && e.pointerType === "mouse" && !el.contains(e.relatedTarget)) hideTip(); });
+$("stamps").addEventListener("pointerdown", e => { const el = e.target.closest(".stamp"); if (el) showTip(el, true); });
+$("stamps").addEventListener("scroll", hideTip);
+{
 }
 $("stBtn").onclick = () => { drawStamps(); lastNew = null; newStamps = 0; $("stDot").classList.remove("on"); $("stModal").classList.add("on"); };
-function closeModal(id) { $(id).classList.remove("on"); }
+function closeModal(id) { $(id).classList.remove("on"); hideTip(); }
 document.querySelectorAll(".modal").forEach(m => m.addEventListener("pointerdown", e => { if (e.target === m && !ch) m.classList.remove("on"); }));
 
 /* ---------- 졸음 ---------- */
@@ -426,14 +627,14 @@ function act() {                     // 무언가 했을 때: 졸고 있었으�
   lastAct = performance.now();
   if (sleeping) {
     sleeping = false; stage.classList.remove("sleep"); chr.classList.remove("zz");
-    say(pick(SLEEP.wake), 2200); stamp("wake");
+    say(pick(more(SLEEP.wake, "wake")), 2200); stamp("wake"); love("wake");
     return true;
   }
   return false;
 }
 function fallAsleep() {
   sleeping = true; stage.classList.add("sleep"); chr.classList.add("zz");
-  say(SLEEP.start, 2000); stamp("sleep");
+  say(SLEEP.start, 2000); stamp("sleep"); sleepStart = performance.now();
 }
 
 /* ---------- 쓰다듬기 ---------- */
@@ -442,7 +643,11 @@ function stroke(p, strength) {
   $("sStroke").textContent = strokes; $("sTotal").textContent = total;
   save("suoPetTotal", total);
   if (total >= 100) stamp("total100");
+  if (total >= 500) stamp("total500");
+  if (total >= 1000) stamp("total1000");
   stamp("first");
+  const hr = new Date().getHours(); if (hr < 5) stamp("night");
+  love("stroke");
   swish(strength);
   fx({ x: p.x, y: p.y - 30 }, pick(WORDS), "word");
   if (Math.random() < 0.35 + mood / 200) fx({ x: p.x + (Math.random() * 40 - 20), y: p.y - 10 }, pick(["💕", "💗", "✨", "🌸"]), "heart");
@@ -452,16 +657,19 @@ function addMood(n) { mood = Math.max(0, Math.min(100, mood + n)); lastPet = per
 /* ---------- 볼 콕 ---------- */
 function poke(p, c) {
   pokes++; $("sPoke").textContent = pokes;
-  if (pokes >= 10) stamp("poke10");
+  const pk = count("poke");
+  if (pk >= 10) stamp("poke10");
+  if (pk >= 50) stamp("poke50");
   const now = performance.now();
   pokeTimes = pokeTimes.filter(t => now - t < 2500); pokeTimes.push(now);
+  if (pokeTimes.length >= 5) stamp("angry");
   mood = Math.max(0, mood + POKE.mood);
   boop(); ripple(p);
   fx({ x: p.x, y: p.y - 26 }, pick(POKE.words), "poke", c.x < 0.5 ? -30 : 30);
   chr.style.setProperty("--px", (c.x < 0.5 ? 6 : -6) + "px");
   chr.style.setProperty("--pr", (c.x < 0.5 ? 1.5 : -1.5) + "deg");
   anim("poked");
-  say(pick(pokeTimes.length >= 3 ? POKE.sayMany : POKE.say));
+  say(pick(pokeTimes.length >= 3 ? POKE.sayMany : more(POKE.say, "poke"))); love("poke");
   hideHint();
 }
 
@@ -474,8 +682,10 @@ function ding(p, e) {
   fx({ x: p.x + (e.x0 < 0.5 ? -8 : 8), y: p.y }, "✧", "heart");
   chr.style.setProperty("--tr", (e.x0 < 0.5 ? 1.4 : -1.4) + "deg");
   anim("ting");
-  say(pick(bellTimes.length >= 4 ? EARRING.sayMany : EARRING.say));
-  stamp("earring"); hideHint();
+  say(pick(bellTimes.length >= 4 ? EARRING.sayMany : more(EARRING.say, "earring"))); love("earring");
+  stamp("earring"); if (bellTimes.length >= 4) stamp("toy");
+  if (count("bell") >= 30) stamp("bell30");
+  hideHint();
 }
 
 /* ---------- 빗질 / 헝클어짐 ---------- */
@@ -540,17 +750,19 @@ function eat(key, m) {
   if (!sn.eat) {                                       // 케이크·경단은 거절
     boop(); fx({ x: m.x + 30, y: m.y - 30 }, "✋", "heart");
     chr.style.setProperty("--px", "0px"); chr.style.setProperty("--pr", "-1.2deg"); anim("poked");
-    if (!woke) say(pick(sn.say), 2200);
-    stamp("snack"); hideHint();
+    if (!woke) say(pick(more(sn.say, "refuse")), 2200);
+    love("refuse");
+    stamp("snack"); if (count("refuse") >= 10) stamp("tempt");
+    hideHint();
     return;
   }
   snackTimes = snackTimes.filter(t => now - t < 15000); snackTimes.push(now);
   nom(); anim("chomp");
   setTimeout(() => fx({ x: m.x, y: m.y - 20 }, pick(["후룩", "호록", "후~"]), "nom"), 200);
   setTimeout(() => fx({ x: m.x + 20, y: m.y - 30 }, pick(["💕", "✨", "🌸"]), "heart"), 380);
-  if (snackTimes.length > 3) { if (!woke) say(pick(FULL_SAY), 2000); }
-  else { addMood(sn.gain); if (!woke) say(pick(sn.say), 2000); }
-  stamp("tea");
+  if (snackTimes.length > 3) { if (!woke) say(pick(FULL_SAY), 2000); stamp("full"); }
+  else { addMood(sn.gain); if (!woke) say(pick(more(sn.say, "tea")), 2000); love("tea"); }
+  stamp("tea"); if (count("tea") >= 10) stamp("tea10");
   hideHint();
 }
 
@@ -580,13 +792,16 @@ stage.addEventListener("pointermove", e => {
   lastAct = performance.now();
   chr.classList.add("pet");
   if (tool === "comb") {                                // 빗질
-    const before = kOf(hm);
+    combPeak = Math.max(combPeak, kOf(hm));
     hm = Math.max(0, hm - d * GAME.combPerPx);         // 천천히 1번 그림으로
     hk = kOf(hm);
     addMood(d * GAME.gainPerPx * 0.35);                // 빗질은 기분이 좋아요
     combAcc += d;
     if (combAcc > 80) { combAcc = 0; swish(.55, 1.6); fx({ x: p.x, y: p.y - 28 }, pick(["슥슥", "사락사락", "슥"]), "combw"); if (hk > 0.05 && Math.random() < .3) say(pick(MESS.comb)); }
-    if (before > 0.3 && hk <= 0) { hm = 0; messFull = false; say(pick(MESS.done), 2200); stamp("comb"); chime(); }
+    if (combPeak > 0.3 && hk <= 0) {                    // 다 빗었어요
+      combPeak = 0; hm = 0; messFull = false; say(pick(more(MESS.done, "comb")), 2200); chime(); love("comb");
+      stamp("comb"); if (count("comb") >= 5) stamp("comb5");
+    }
     else if (messFull && hk < 0.6) messFull = false;
     return;
   }
@@ -644,7 +859,10 @@ function finishChallenge(score) {
     <div class="rbest">${isBest ? "🎉 최고 기록 달성!" : `최고 기록 ${bestScore}점`}</div>
     <div class="pbtns"><button class="ghost" onclick="closeChallenge()">닫기</button><button onclick="closeChallenge(); $('chBtn').click()">다시 하기</button></div>`;
   setTimeout(() => { $("chModal").classList.add("on"); }, 250);
-  stamp("chdone"); if (rank === CHALLENGE.ranks[CHALLENGE.ranks.length - 1]) stamp("expert");
+  stamp("chdone"); hear(rank.say); love("challenge");
+  if (score >= 30) stamp("apprentice");
+  if (score >= 60) stamp("master");
+  if (score >= 100) stamp("expert");
 }
 function closeChallenge() { ch = null; $("chbar").classList.remove("on"); closeModal("chModal"); lastAct = performance.now(); }
 
@@ -657,14 +875,16 @@ function tick(t) {
   if (!down && t - lastPet > GAME.idleDelay * 1000 && mood > 0) mood = Math.max(0, mood - GAME.decayPerSec * dt);
   // 졸음
   if (!sleeping && !ch && !down && !dragging && t - lastAct > GAME.sleepAfter * 1000) fallAsleep();
+  if (sleeping && t - sleepStart > 60000) stamp("nap");
   if (sleeping && t - lastZ > 1300) { lastZ = t; const q = at(0.62 + Math.random() * 0.08, 0.2); fx(q, pick(["Z", "z", "Zz"]), "z"); }
   // 그림 바꾸기
   if (!down && t - lastPet > GAME.idleDelay * 1000 && hm > 0) hm = Math.max(0, hm - GAME.decayPerSec * dt);   // 가만두면 1번 그림으로
   hk = kOf(hm);
+  if (hk <= 0 && tool !== "comb") combPeak = 0;
   const k = hk;
   curK = k;
   mess = k * 100;
-  if (!messFull && !ch && k >= 0.999) { messFull = true; say(pick(MESS.complain), 2400); toast("🪮 빗으로 머리를 빗어 주세요"); }
+  if (!messFull && !ch && k >= 0.999) { messFull = true; stamp("messy"); say(pick(MESS.complain), 2400); toast("🪮 빗으로 머리를 빗어 주세요"); }
   if (messFull && k <= 0.02) messFull = false;
   $("img2").style.opacity = k;
   $("pair").style.transform = `translate(${(2.662 * k).toFixed(3)}%, ${(4.628 * k).toFixed(3)}%) scale(${(1 - 0.0649 * k).toFixed(4)})`;
@@ -680,11 +900,12 @@ function tick(t) {
     if (goingUp && mood > 1 && !ch && t > quiet) say(pick(LINES[st].say));
   }
   if (down && tool === "hand" && !messFull && !ch && mood > 5 && t - lastTalk > PET_TALK * 1000 && !$("bubble").classList.contains("show")) {
-    lastTalk = t; say(pick(LINES[lineStage].say));
+    lastTalk = t; say(pick(lineStage >= 1 ? more(LINES[lineStage].say, "pet") : LINES[lineStage].say));
   }
   if (mood > 30) petted = true;
   if (petted && mood === 0 && !sleeping) { petted = false; say(pick(END_SAY)); }
-  if (mood >= 99.5 && !maxShown) { maxShown = true; $("max").classList.add("show"); chime(); stamp("max"); }
+  if (maxShown && t - maxSince > 10000) stamp("maxkeep");
+  if (mood >= 99.5 && !maxShown) { maxShown = true; maxSince = t; $("max").classList.add("show"); chime(); stamp("max"); }
   if (mood < 80 && maxShown) { maxShown = false; $("max").classList.remove("show"); }
   requestAnimationFrame(tick);
 }
